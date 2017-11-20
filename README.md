@@ -1,17 +1,11 @@
 # Designing Pipeline
+We've discussed the setup of data storage and the base object detection model as separate parts. Generally, we will use s3 for storage, and then process the object detection on images using python scripts with Tensorflow to get some output. This writeup introduces the design of our core pipeline, in which we connect every piece we have to form an automated process that will get the images, process the images, and eventually deliver necessary alarm when threats are detected.
 ## Building up a Data Pipeline
-A way to detect objects in data, which is couple of building blocks we are doing. Premium post processing , finishing design of our core pipeline, we have object detetion piece and how to stroe the dta, that’s not the full picture. Automated pipeline, wwe put image on the top and value comes out the other side. Right now we just talks abaout how to detectbjectsin miages without other kind of pieces. 
-Where dploy, amazon.tensofrlow came of of goole, kubernet came out of google, certain conviouesoucs
-Work toghethte ron desiging. Detect and come up with a design.
-What this meng for deisinging this.
-We have Some input dat, one of the data repository, we gong create this version collectiongs of data,s3, processing step, like lsat week, we going to detect objectcs in those images, typthon sript, data output form that, whatervver,we gongna output.
-A pece we going to put togethere todea,
-Maybe we have multiple input/some post processing on that, a couple of things , we cominigthose agoian in the end.
-Images comes in, a seriese of action would haappned aftr words,
-All the data will be back by s3, the processing happening onamazon ec2 instances, where actually deploy things and where they run. 
+
 
 To build a data pipeline, we usually need to consider three parts. THe first is input, which in our case is a Pachyderm Data Repository.
 Then we need a processing step. For example, a python script. After processing, we get data output from processing.
+
 ## Input
 The input of this pipeline is no doubt images. Since our team is building a data pipeline for a commemcerilized security system, its reasonabele assume those images are coming from difrent camers of diferent proepreties. As a result, we should not treat all of them the same way. Wther the origil is images or videos , and when to send picture is out of the bundires of our pipelien.
 
@@ -25,6 +19,7 @@ In some aspect, allsert a didfertn user when the first user has some threats. Ab
 Assume have a way of getting this to us, not wrroy about the magniesm. 
 
 ## Building blocks
+the processing happening onamazon ec2 instances, where actually deploy things and where they run.
 Object detection piecie, pythonand tendorlaow to do object detection, takein iimpages and out put amunber of thing, another picuter lst week. The actual class name , tags asociaited with , count of detected things. For example., this is basjiclaly the same model, so Ik like a ccpivtue, instead of get that pinctuer sm output some text. Not limit to only putput imge.
 Data maniupulation stage, colud just be in python, cloud be move things aroung, copy form there to ther ,we  can auto matea theta , evne t=with python, with some sricpt. Change their sheaf we can serch through files.we cando some ploting may be with python , may be with r. building blocks. 
 Something should be documented if we choces it conventions.
