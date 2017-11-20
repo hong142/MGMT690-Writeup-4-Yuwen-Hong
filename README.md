@@ -5,27 +5,15 @@ To build a data pipeline, we usually need to consider three parts, which are inp
 ## Input
 The input of this pipeline is no doubt images. Since our team is building a data pipeline for a commercialized security system, its reasonable to assume those images are coming from different cameras of different properties. As a result, we should not treat all of them the same way for the whole process. How those images are generated and collected is out of the boundary of our pipeline.
 ## Building Blocks
-### Conventions & Rules
+### Preprocessing
 Before we do object detection, we need to preprocess our inputs to ensure that the downstream processing happens only on qualified inputs rather than wasting time on garbage. We need some rules for input validation, and the same set of rules applies to all the inputs regardless of their sources. When we generate the alert, we want to alert a specific user or group of users, so it’s important that we have an existing tag recording when and where (in terms of a user or device) is the image coming from at the beginning. In other words, we need at least a user id and a timestamp to indicate the location and time of each image, and our team decided the tag be in the format of "id_timesatmp.jpg" as image names, Specifically, we will use [UNIX timestamp](https://en.wikipedia.org/wiki/Unix_time) and the time zone is set to be UTC. If you want to replicate our system, you can define your own tag rules, and tags can actually in many other formats, which is really flexible. For example, you can have a separate text file for each image, or embed tags in the image and extract them later. However, you should always pay close attention to the track of time zone, especially if the system is planned to work on multilocation. Besides, we expect our inputs to be colored. We might also add rules on resolution if we have time, because poor resolution could cause trouble in detection. For this part, you can also enforce things like quality of image or size of image based on your model design. The detection model we will use here is quite flexible on size and format, so we are not going to restrict that. 
 
 If officially put into business, we will have convention contract based on those rules, so that all images sent to this system for process are supposed to be in this format. But if you are processing from certain data sources which already have had their data conventions, you may want to build your pipeline according to their policy. Also, we will document the dataset we trained our model on to let users know objects they can expect to be detected.
 
-Each image after validation process will be categorized either valid or invalid. In our case, we will discard all the invalid images without any further processing, like doing some enhancement, but we do plan to keep them in case there are problems requiring us to go back to those images to debug. For example, if we do not receive any threats report for a device over an unusually long time, we need those data to figure out if the problem lies with the device or our process settings.
-
-
-  
- loop questions of imags into a validation,
- if I got imges coming in to reporsitory, images called images,  (based on the requiremtn of the user, if it placed on the public area, people scoming in andout, policy as when I alert, not about their content)we could have some rule for this is ok for the building not ok, after detection. Lets call this validation of poerperoty of images, output of this validation ias going to be, validated and standized image.
-
-
-
-
-Going to be implemented as a Data repository ,actually in the actual pipieple, output from each step will be versioned together,  the reason is you want have a clear chian of what generated what. Bu there ;ets say we have a directory for valid and invlaid imges, performing chaekcs on the images to ensure they are in right format , good resolution.
-
+Each image after validation process will be categorized either valid or invalid. In our case, we will discard all the invalid images without any further processing, like doing some enhancement, but we do plan to keep them seperately in case there are problems requiring us to go back to those images to debug. For example, if we do not receive any threats report for a device over an unusually long time, we need those data to figure out if the problem lies with the device or our process settings.
 ### Object Detection
 Have imgaes we can use. Detectin gimage, we have this step kind of look through last week. Uses python and tensorflow, feed the valided images to that object detection, no need to process this, because we know they are invlaid ,we can’t use them. Ouptput from here is class we detected, output some not image file, such as Json, folder, classe, in here is going to be Jason files, how do we know whithc jaosn,we name this  id-time, carry th=rough, not lose context, json should lnclude this things.I have the class in json format for each iamge, what objecs in ther and correspongbing probabilityies. List of dandeous classes and not dangerous. Output json with classes. How we go nona represent those classification in data. Automated.whtere to alret sb or not.  It’s easy to automated around that text reprensentation than iamge with box. 
-Data maniupulation stage, colud just be in python, cloud be move things aroung, copy form there to ther ,we  can auto matea theta , evne t=with python, with some sricpt. Change their sheaf we can serch through files.we cando some ploting may be with python , may be with r. building blocks. 
-Something should be documented if we choces it conventions.
+
 
 ### Threat Detection
 
@@ -43,3 +31,5 @@ Version cllosetcs of daa, varies piece of data, input or ouptout or just intermi
 In some aspect, allsert a didfertn user when the first user has some threats. Abounch of images forma aboung of difiernt properoties.
 Assume have a way of getting this to us, not wrroy about the magniesm. 
 you could  Doing analytics with time, vry important. Timezone for compaies with golabl prensen, we can’t do nayhitng in this form. We put a rule is utc time.
+Data maniupulation stage, colud just be in python, cloud be move things aroung, copy form there to ther ,we  can auto matea theta , evne t=with python, with some sricpt. Change their sheaf we can serch through files.we cando some ploting may be with python , may be with r. building blocks. 
+Something should be documented if we choces it conventions.
