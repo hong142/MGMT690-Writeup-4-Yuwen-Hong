@@ -10,14 +10,14 @@ Before we do object detection, we need to preprocess our inputs to ensure that t
 
 If officially put into business, we will have convention contract based on those rules, so that all images sent to this system for process are supposed to be in this format. But if you are processing from certain data sources which already have had their data conventions, you may want to build your pipeline according to their policy. Also, we will document the dataset we trained our model on to let users know objects they can expect to be detected.
 
-you could  Doing analytics with time, vry important. Timezone for compaies with golabl prensen, we can’t do nayhitng in this form. We put a rule is utc time. 
+Each image after validation process will be categorized either valid or invalid. In our case, we will discard all the invalid images without any further processing, like doing some enhancement, but we do plan to keep them in case there are problems requiring us to go back to those images to debug. For example, if we do not receive any threats report for a device over an unusually long time, we need those data to figure out if the problem lies with the device or our process settings.
 
 
   
  loop questions of imags into a validation,
  if I got imges coming in to reporsitory, images called images,  (based on the requiremtn of the user, if it placed on the public area, people scoming in andout, policy as when I alert, not about their content)we could have some rule for this is ok for the building not ok, after detection. Lets call this validation of poerperoty of images, output of this validation ias going to be, validated and standized image.
 
-Each image after validation process will be categroized either valid or invalid. In our case, we will disgrad all the invalid iamges without any further processing, like doing some enhancement, but we do plan to keep them in case there is a porblem or we notice that a bar dropped, we  can go bakn there to debug.equipment is bad.
+
 
 
 Going to be implemented as a Data repository ,actually in the actual pipieple, output from each step will be versioned together,  the reason is you want have a clear chian of what generated what. Bu there ;ets say we have a directory for valid and invlaid imges, performing chaekcs on the images to ensure they are in right format , good resolution.
@@ -42,3 +42,4 @@ Actual users here, in our companywe also want to maintain an internal visiblibil
 Version cllosetcs of daa, varies piece of data, input or ouptout or just intermietemetn. Organization of dat,
 In some aspect, allsert a didfertn user when the first user has some threats. Abounch of images forma aboung of difiernt properoties.
 Assume have a way of getting this to us, not wrroy about the magniesm. 
+you could  Doing analytics with time, vry important. Timezone for compaies with golabl prensen, we can’t do nayhitng in this form. We put a rule is utc time.
