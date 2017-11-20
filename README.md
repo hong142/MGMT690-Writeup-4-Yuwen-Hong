@@ -4,7 +4,7 @@ We've discussed the setup of data storage and the base object detection model as
 To build a data pipeline, we usually need to consider three parts, which are input, middle processing steps, and output.
 
 ## Input
-The input of this pipeline is no doubt images. Since our team is building a data pipeline for a commemcerilized security system, its reasonabele assume those images are coming from difrent camers of diferent proepreties. As a result, we should not treat all of them the same way. Wther the origil is images or videos , and when to send picture is out of the bundires of our pipelien.
+The input of this pipeline is no doubt images. Since our team is building a data pipeline for a commercialized security system, its reasonable to assume those images are coming from different cameras of different properties. As a result, we should not treat all of them the same way for the whole process. How those images are generated and collected is out of the boundary of our pipeline.
 
 ## Output
 To get an image with object detected is not the end of our pipeline. The ultimate output should be a notification to the specific user as well as related deaperment when an threat is detected. We will realize this in email delivery vai API.
