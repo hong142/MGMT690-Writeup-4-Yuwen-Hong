@@ -1,10 +1,7 @@
 # Designing Pipeline
 We've discussed the setup of data storage and the base object detection model as separate parts. Generally, we will use s3 for storage, and then process the object detection on images using python scripts with Tensorflow to get some output. This writeup introduces the design of our core pipeline, in which we connect every piece we have to form an automated process that will get the images, process the images, and eventually deliver necessary alarm when threats are detected.
 ## Building up a Data Pipeline
-
-
-To build a data pipeline, we usually need to consider three parts. THe first is input, which in our case is a Pachyderm Data Repository.
-Then we need a processing step. For example, a python script. After processing, we get data output from processing.
+To build a data pipeline, we usually need to consider three parts, which are input, middle processing steps, and output.
 
 ## Input
 The input of this pipeline is no doubt images. Since our team is building a data pipeline for a commemcerilized security system, its reasonabele assume those images are coming from difrent camers of diferent proepreties. As a result, we should not treat all of them the same way. Wther the origil is images or videos , and when to send picture is out of the bundires of our pipelien.
