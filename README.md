@@ -20,13 +20,4 @@ After the object detection, we need one more detection process to determine the 
 ### Postprocessing - Alert Service
 To get an image with object detected is not the end of our pipeline. The ultimate output should be a notification to the specific user and/or the police when a threat is detected. We will realize this in email delivery via API. We choose to make a JSON API call with image and text to the SMTP API of Sendgrid, an email alert service company. Other email service options inculde Nagios and Pagerduty.
 ### Postprocessing - Monitoring Plot
-Besides customers, as a security service company, we also want to maintain an internal visibility about some key statistics, such as where and how things are triggered, as well as the frequency. We decided to generate a bar plot per day to get a general idea. Locations on the plot is corresponded to IDs, and the value would be the count of the files under the certain folder within the period of time. Another reason why tags with ID and time-zone-identified timestamp are essential. Other statistics can be generated and analyzed based on a similar mechanism, so a dashboard is also possible if you can justify the need.
-
-Version cllosetcs of daa, varies piece of data, input or ouptout or just intermietemetn. Organization of dat,
-In some aspect, allsert a didfertn user when the first user has some threats. Abounch of images forma aboung of difiernt properoties.
-Assume have a way of getting this to us, not wrroy about the magniesm. 
-you could  Doing analytics with time, vry important. Timezone for compaies with golabl prensen, we can’t do nayhitng in this form. We put a rule is utc time.
-Data maniupulation stage, colud just be in python, cloud be move things aroung, copy form there to ther ,we  can auto matea theta , evne t=with python, with some sricpt. Change their sheaf we can serch through files.we cando some ploting may be with python , may be with r. building blocks. 
-Something should be documented if we choces it conventions.
-
- Another advantage is look hwt’s here rather than just look at counts.
+Besides customers, as a security service company, we also want to maintain an internal visibility about some key statistics, such as where and how things are triggered, as well as the frequency. We decided to generate a bar plot per day to get a general idea. Locations on the plot is corresponded to IDs, and the value would be the count of the files under the certain folder within the period of time. Another reason why tags with ID and time-zone-identified timestamp are essential. Other statistics can be generated and analyzed based on a similar mechanism, so a dashboard is also possible if you justify the need.
