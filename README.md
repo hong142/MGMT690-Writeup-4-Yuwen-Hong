@@ -4,7 +4,7 @@ We've discussed the setup of data storage and the base object detection model as
 ## Building Blocks
 Our pipeline will be broken into three major parts, which are preprocessing, object detection, and postprocessing. Of course, you could lump them into one piece, but there are several reasons not to do that. First, for a system like in our case, we might want to treat data from each user differently, and to process data from multiple users parallelly. Splitting up steps allows us to scale each step differently. Second, different steps require different tools, split up steps provide the freedom to use fewer tools for a particular step.
 
-The Pachyderm will data versioning for each repo of the pipeline, so each time we make a copy of file, it just makes incremental changes and then create a pointer rather than an actual copy to take up more space. Thus, we don't have to build an additional repository for keeping historical records.
+The Pachyderm will data versioning for each repo of the pipeline, so each time we make a copy of a file, it just makes incremental changes and then creates a pointer rather than an actual copy to take up more space. Thus, we don't have to build an additional repository for keeping historical records.
 ### Preprocessing - Data Validation
 The input of this pipeline is no doubt images. Since our team is building a data pipeline for a commercialized security system, its reasonable to assume those images are coming from different cameras of different properties. As a result, we should not treat all of them the same way for the whole process. How those images are generated and collected is out of the boundary of our pipeline.
 
