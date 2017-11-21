@@ -16,25 +16,11 @@ Each image after validation process will be categorized either valid or invalid.
 ### Object Detection
 With input standardized, the next step is to feed valid images into the object detection model we described in the previous writeup. Output from here is the class detected, which can be in the form of image or text representations, such as a JSON file. To carry through the identity of the image, we will name the JSON file in the "id_timesatmp.jpg". The reason we have a JSON file to record the detected classes and corresponding probabilities in addition to marks on images is that it’s easier to automate around that text representation than images with box.
 ### Postprocessing - Threat Detection
-After the object detection, we need one more detection process to determine the threat level, which we will call it threat detector. In our design, for this step we will process by ID. That is to say we will bucket everything from each ID together, and process things under the same ID (folder) the same way through a loop. As you know, the definition of threats divers among users, so processing by ID is the most efficient way. The detector will take in the JSON files outputted from the last step, read in corresponding threats rules, a list of dangerous classes required by the specific user, and match objects against the rules. You do not have to document anything about classes that are not dangerous. Any detected thrests will be written back into the JSON file.
+After the object detection, we need one more detection process to determine the threat level, which we will call it threat detector. In our design, for this step we will process by ID. That is to say we will bucket everything from each ID together, and process things under the same ID (folder) the same way through a loop. As you know, the definition of threats divers among users, so processing by ID is the most efficient way. The detector will take in the JSON files outputted from the last step, read in corresponding threats rules, a list of dangerous classes required by the specific user, and match objects against the rules. You do not have to document anything about classes that are not dangerous. Any detected thrests will be written back into the JSON file, and the JSON file will be saved as a copy into another data repository.
 ### Postprocessing - Alert Service
 To get an image with object detected is not the end of our pipeline. The ultimate output should be a notification to the specific user and/or the police when a threat is detected. We will realize this in email delivery via API. We choose to make a JSON API call with image and text to the SMTP API of Sendgrid, an email alert service company. Other email service options inculde Nagios and Pagerduty.
 ### Postprocessing - Monitoring Plot
-Actual users here, in our companywe also want to maintain an internal visiblibility aorung whee and how things are tragin g, how often they are ftrgiering and varies statistic. How might we do that. Got users taken care. How many tiems, which loctiaons are alerting the most.dashboead an adatabse where we load this. For our purpouse, we plot something, not a ful dashboard, all loctions bar plot, which one has the most,, partial visisbility. Some sort fo ploits. 
-Locations corresponse to ids, create bar plot of this repo, almost same thing, id1,2 under each of this folders, coy over ones are threats and put the mover here, we can say just the counts of the threats, just a fiel of numer in it. Either way we can have a processing stpes here. 
-
-
-
- 
-
-leteallt, we maywant generate a bar plot per day  per hour or notify the user this happen this time,
-
-
-
-## Output
-
-
-
+Besides customers, as a security service company, we also want to maintain an internal visibility about some key statistics, such as where and how things are triggered, as well as the frequency. We decided to generate a bar plot per day to get a general idea. Locations on the plot is corresponded to IDs, and the value would be the count of the files under the certain folder within the period of time. Another reason why tags with ID and time-zone-identified timestamp are essential. Other statistics can be generated and analyzed based on a similar mechanism, so a dashboard is also possible if you can justify the need.
 
 Version cllosetcs of daa, varies piece of data, input or ouptout or just intermietemetn. Organization of dat,
 In some aspect, allsert a didfertn user when the first user has some threats. Abounch of images forma aboung of difiernt properoties.
